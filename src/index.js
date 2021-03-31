@@ -2,7 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 const Greetings = () => {
-  return <h2>Greetings User</h2>
+  // return (
+  //   <div>
+  //     <h1>
+  //       Greetings User
+  //     </h1>
+  //   </div>
+  // )
+  return React.createElement('div', {}, React.createElement('h1', {}, 'Greetings User'))
 }
 
 export default Greetings

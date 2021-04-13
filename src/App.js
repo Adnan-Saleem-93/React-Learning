@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.css'
 
 const App = () => {
   return (
@@ -12,12 +13,7 @@ const App = () => {
 }
 
 const Person = () => {
-  return (
-    // short syntax for React.Fragment is <>
-    <>
-      <h1>John Doe</h1>
-    </>
-  )
+  return <h1 className='person'>John Doe</h1>
 }
 
 const Message = () => {
@@ -25,7 +21,7 @@ const Message = () => {
     <>
       {/* Code or comments inside HTML must be wrapped in {} (curly braces} */
       /* inline style attribute is used as an object. */
-      /* html attributes must be written in camelCase syntax, e.g., fontWeight in style below */}
+      /* html or css properties must be written in camelCase syntax, e.g., fontWeight in style below */}
       <h3 style={{fontWeight: 600}}>How are you?</h3>
     </>
   )

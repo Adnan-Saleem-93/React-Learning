@@ -13,7 +13,8 @@ const App = () => {
       {people.map((person, index) => {
         // one way to pass props is to use the spread (...object) operator
         return <Person key={person.id} {...person} />
-        // when rendering components in a list (map), we need to provide it a unique key
+        // when rendering components or items in a list,
+        // we need to provide a unique key to each item
       })}
     </React.Fragment>
   )

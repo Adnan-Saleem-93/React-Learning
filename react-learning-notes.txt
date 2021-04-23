@@ -1,0 +1,38 @@
+1. ReactDOM.render is used to render an app as a React App
+    e.g.,
+    ReactDOM.render(
+        <App />,
+        document.getElementById('root')
+    );
+    in this example, the render method renders the App component in the HTML element
+    whose ID is 'root'
+2. React uses functions called components to render elements on page
+components are used as <Component /> or <Component></Component>
+
+3. HTML Elements can be created using simple HTML syntax or by using
+React.createElement, React.cloneElement etc. similarly to javascript
+
+4. Code written inside a component's return method is called JSX, which can contain
+HTML and javascript as well.
+
+5. JSX has a certain set of rules:
+    a. If there are more than one HTML elements being returned from JSX,
+    they must be wrapped in a parent element like a div, article, section etc.
+    b. React has its own element that can be used to wrap code called React.Fragment
+    which can be used like,
+        1.
+        <React.Fragment>
+        // any html goes here
+        </React.Fragment>
+        
+        2. short syntax
+        <>
+        // html goes here
+        </>
+    c. class is reserved word in React, so to use HTML class attribute, we use "className"
+    d. style attribute is treated as an object in React
+    so it must contain CSS properties as an object of key/value pairs
+    e. variables, arrays, objects etc. must be wrapped inside curly {} braces
+    f. CSS properties and HTML attributes that contain hyphens(-) must be used in camelCase
+    e.g.,
+        style={{fontSize:10}} or dataName="example"

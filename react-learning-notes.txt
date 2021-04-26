@@ -7,7 +7,8 @@
     in this example, the render method renders the App component in the HTML element
     whose ID is 'root'
 2. React uses functions called components to render elements on page
-components are used as <Component /> or <Component></Component>
+components are used as <Component /> or <Component></Component>.
+Components must be in PascalCase.
 
 3. HTML Elements can be created using simple HTML syntax or by using
 React.createElement, React.cloneElement etc. similarly to javascript
@@ -29,10 +30,45 @@ HTML and javascript as well.
         <>
         // html goes here
         </>
+
+        this can prevent creation of unnecessary divs, articles and sections in the browser's html
+        as React.Fragment in not actually rendered in the browser.
     c. class is reserved word in React, so to use HTML class attribute, we use "className"
     d. style attribute is treated as an object in React
     so it must contain CSS properties as an object of key/value pairs
-    e. variables, arrays, objects etc. must be wrapped inside curly {} braces
+    e. variables, arrays, objects or any JS-related code
+    must be wrapped inside curly {} braces
     f. CSS properties and HTML attributes that contain hyphens(-) must be used in camelCase
     e.g.,
         style={{fontSize:10}} or dataName="example"
+
+6. React components are like functions, that is, arguments can be passed to them.
+To pass an argument, simply give it a key and value.
+e.g., <Example name="John Doe"/>, here "name" is an argument
+
+7. To use the passed arguments, React provide a special object called 'props', 
+which contains all the passed key/values. e.g., "props.name" accesses the 'name' argument
+passed in 'Example' component.
+
+8. Components can have children elements (html or other components) as well, which are provided as:
+<Example>
+    <h1>Hello World</h1>
+</Example>
+To access the children elements/components of Example, we use a special property of the 'props'
+object called 'children'. e.g., props.children will render everything inside the Example
+component above, <h1>Hello World</h1> in this case.
+
+9. Component can be used in loops (for, map, each etc.). To give a unique identity to each component in that
+loop of components, React provide the "key" keyword. It can be helpful when we want to perform some
+change or action a specific component in a list of components.
+
+10. In React, events such as onclick, onchange are used with camelCase, such as, onClick, onChange.
+There are three ways to handle events:
+a. inline function -> onClick={()=>//do something here}
+b. reference other functions -> onClick={handleClick}. handleClick is a function being reference here,
+so when onClick event occurs, the code inside handleClick will be executed
+c. When using the reference method, if the referenced function required arguments,
+then we need to call the referenced function inside an inline function
+e.g., onClick={()=> handleClick(someArgument)}. 
+Using onClick={handleClick(someArgument)} will execute the handleClick function's code on component rendering,
+without waiting for the onClick event to occur.

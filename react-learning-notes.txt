@@ -72,3 +72,8 @@ then we need to call the referenced function inside an inline function
 e.g., onClick={()=> handleClick(someArgument)}. 
 Using onClick={handleClick(someArgument)} will execute the handleClick function's code on component rendering,
 without waiting for the onClick event to occur.
+
+11. When dealing with dynamic data or updating UI on some event, useState Hook
+is used. UseState hook consists of two parts: 1. state, 2. a method to update state
+e.g., let [count, setCount] = React.useState(0)
+here, 'count' is a state variable, 'setCount' is the method to update 'count' state

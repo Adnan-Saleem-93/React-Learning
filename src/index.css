@@ -5,3 +5,15 @@ body {
 .person {
   color: red;
 }
+.counter {
+  text-align: center;
+  font-size: xx-large;
+}
+button {
+  width: 150px;
+  height: 50px;
+}
+
+button b {
+  font-size: x-large;
+}

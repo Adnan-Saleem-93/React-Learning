@@ -77,3 +77,18 @@ without waiting for the onClick event to occur.
 is used. UseState hook consists of two parts: 1. state, 2. a method to update state
 e.g., let [count, setCount] = React.useState(0)
 here, 'count' is a state variable, 'setCount' is the method to update 'count' state
+
+12. UseState Arrays => when dealing with arrays in state: (without using any databases)
+    a. Add new item : in order to add new item in state array,
+        i) first duplicate the array into a new array by using spread operator.
+            (using, let newArray = oldArray will result in an error as 'newArray' will get reference of 'oldArray'
+            and try to update that.)
+        ii) then add/push new item in the new array
+        iii) then pass this new, updated array in the array state's handler method.
+            e.g, setArray(newArray)
+    b. To remove an item from the array, create a new array and remove the desired item from it,
+        then do, setArray(filteredArray)
+    c. To clear all values in an array, just do setArray([])
+
+13. In React, we can use 'bootstrap' and React's own 'react-bootstrap' libraries for styling 
+    or any other libraries of choice

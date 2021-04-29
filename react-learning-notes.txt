@@ -92,3 +92,15 @@ here, 'count' is a state variable, 'setCount' is the method to update 'count' st
 
 13. In React, we can use 'bootstrap' and React's own 'react-bootstrap' libraries for styling 
     or any other libraries of choice
+
+14. UseState - Object => when dealing with objects in state: (without using any databases)
+    There are two ways to update any property in the object, 
+        i.  setState({...state, key1: value}).
+            -- spread (...), then update key1's value only
+        ii. let newObject = {...state}
+            newObject.key1 = value
+            setState(newObject)
+            -- duplicate object in state, update key1's value, 
+            -- then pass new object in state handler method.
+    UseState - Object is useful when we need to have multiple dynamic values. 
+    We can put them in an object and use one state handler method to update all of them.

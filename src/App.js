@@ -17,9 +17,23 @@ const Person = ({name}) => {
 
   // function to add a new item
   const onAddNew = () => {
-    let newPeople = [...people]
-    newPeople.push({id: people[people.length - 1].id + 1, name: newPerson}) // pusing to item to the new array
-    setState({...state, people: newPeople})
+    // add new item after a delay of 3 seconds
+    setTimeout(() => {
+      // using this method (funtional update form), we'll be updating the latest state value
+      setState((prevState) => {
+        let newPeople = [...prevState.people]
+        let length = newPeople.length
+        let count = length ? newPeople[length - 1].id + 1 : 0
+        newPeople.push({id: count, name: newPerson}) // pusing to item to the new array
+
+        return {...prevState, people: newPeople}
+      })
+
+      // // using this method, it is possible that we can update an outdated state value
+      // let newPeople = [...people]
+      // newPeople.push({id: people[people.length - 1].id + 1, name: newPerson}) // pusing to item to the new array
+      // setState({...state, people: newPeople})
+    }, 3000)
   }
 
   // function to clear all items
@@ -47,7 +61,7 @@ const Person = ({name}) => {
       {people.map(({id, name}, index) => {
         return (
           <Row key={index}>
-            <Col md={4}>
+            <Col md={2}>
               <button
                 className="removeItem"
                 onClick={() => {
@@ -64,7 +78,7 @@ const Person = ({name}) => {
         )
       })}
       <Button onClick={onAddNew}>Add Person</Button>
-      <Button variant="danger" onClick={onClear}>
+      <Button className="ml-1" variant="danger" onClick={onClear}>
         Clear Items
       </Button>
     </div>

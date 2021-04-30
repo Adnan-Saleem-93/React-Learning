@@ -104,3 +104,9 @@ here, 'count' is a state variable, 'setCount' is the method to update 'count' st
             -- then pass new object in state handler method.
     UseState - Object is useful when we need to have multiple dynamic values. 
     We can put them in an object and use one state handler method to update all of them.
+
+15. UseState - Functional Update Form =>
+    since state update happens asynchronously in React, So it is possible that there would be old value in
+    the closure of the state update handler method. Functional Update Form is useful when multiple
+    events to update the same state value occur, and we want each of those to state update events to
+    update the latest value.

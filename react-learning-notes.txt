@@ -120,3 +120,12 @@ here, 'count' is a state variable, 'setCount' is the method to update 'count' st
     As a general rule of React, we cannot place Hooks in conditional statements, however we can
     put conditional statements inside the useEffect hook, if we want to do something if a certain condition matches
 
+    UseEffect - Dependency list =>
+    The dependency array is the second optional argument in the UseEffect Hook, (the first being the callback function, where we put our code)
+    The dependency array lets you specify the conditions to trigger it.
+    if we want a side-effect to occur only once (on initial render), we pass an empty array []
+    if we want a side-effect to occur when some value(s) change(s), we pass that value in the dependency array
+    like useEffect(callback,[someValue])
+    This is particularly useful when we update state in useEffect. Updating the state will cause a re-render
+    and as mentioned previously every re-render generates a side-effect, thus, this will lead to an infinite loop
+

@@ -14,7 +14,9 @@ const App = () => {
 const Person = ({name}) => {
   let [state, setState] = useState({people: data, newPerson: ''}); // array destructuring
   let {people, newPerson} = state;
+  let [counter, setCounter] = useState(people.length);
 
+  // this will run whenever the 'people' state value updates
   useEffect(() => {
     // we will update the title of the page with every re-render
     let len = people.length;
@@ -25,7 +27,17 @@ const Person = ({name}) => {
     } else {
       document.title = `No People`;
     }
-  });
+  }, [people]);
+
+  // this will run only once, on initial render
+  useEffect(() => {
+    setCounter(counter + 1);
+  }, []);
+
+  // this will cause an infinite loop
+  // useEffect(() => {
+  //   setCounter(counter + 1);
+  // });
 
   // function to add a new item
   const onAddNew = () => {
@@ -85,6 +97,7 @@ const Person = ({name}) => {
       <Button className="ml-1" variant="danger" onClick={onClear}>
         Clear Items
       </Button>
+      <p>Count = {counter}</p>
     </div>
   );
 };

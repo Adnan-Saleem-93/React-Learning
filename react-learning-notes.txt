@@ -110,3 +110,13 @@ here, 'count' is a state variable, 'setCount' is the method to update 'count' st
     the closure of the state update handler method. Functional Update Form is useful when multiple
     events to update the same state value occur, and we want each of those to state update events to
     update the latest value.
+
+16. UseEffect - Basics =>
+    useEffect Hook lets us hook into the react side-effects operations
+    We usually place the functionality in useEffect hook, which we want React to execute when a component renders/re-renders 
+    By default, useEffect hook is called on each re-render of a component.
+    
+    UseEffect - Conditionals =>
+    As a general rule of React, we cannot place Hooks in conditional statements, however we can
+    put conditional statements inside the useEffect hook, if we want to do something if a certain condition matches
+

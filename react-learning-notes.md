@@ -158,3 +158,11 @@ The dependency array is the second optional argument in the UseEffect Hook, (the
 useEffect(callback,[someValue])
 ```
 This is particularly useful when we update state in useEffect. Updating the state causes a re-render and as mentioned previously every re-render generates a side-effect, thus, this will lead to an infinite loop
+
+19. **UseEffect - Cleanup Function** =>
+
+The useEffect hook has a cleanup function that works in a similar fashion as 'componentWillUnmount' lifecycle method but they are not the same thing. It is particularly used to unsubscribe from APIs or to avoid race conditions in async requests
+
+- the cleanup function does not execute on initial rendering of component. Instead, it runs only on re-renders.
+- this function is executed before the side-effect executes.
+- when component re-renders, the cleanup function will have previous state value instead of the latest.

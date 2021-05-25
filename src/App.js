@@ -12,7 +12,33 @@ const App = () => {
 };
 
 const Person = () => {
-  return <div className="people"></div>;
+  let [clickCount, setClickCount] = useState(0);
+  useEffect(() => {
+    console.log("This is the side effect.");
+    console.log("latest count:", clickCount);
+
+    // cleanup function
+    return () => {
+      console.log(
+        "This is the cleanup function."
+      );
+      // even though, cleanup function executes after re-renders and before the side-effect, it still contains previous state
+      console.log("old count:", clickCount);
+    };
+  });
+
+  const handleClick = () => {
+    setClickCount(clickCount + 1);
+  };
+
+  return (
+    <div className="people">
+      <p>Button clicked {clickCount} times</p>
+      <Button variant="secondary" onClick={handleClick}>
+        Click me
+      </Button>
+    </div>
+  );
 };
 
 export default App;

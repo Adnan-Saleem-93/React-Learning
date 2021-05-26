@@ -1,3 +1,4 @@
+<!-- prettier-ignore -->
 1.  ReactDOM.render is used to render an app as a React App e.g.,
 
 ```javascript
@@ -161,7 +162,7 @@ This is particularly useful when we update state in useEffect. Updating the stat
 
 19. **UseEffect - Cleanup Function** =>
 
-The useEffect hook has a cleanup function that works in a similar fashion as 'componentWillUnmount' lifecycle method but they are not the same thing. It is particularly used to unsubscribe from APIs or to avoid race conditions in async requests
+The useEffect hook has a cleanup function that works in a similar fashion as 'componentWillUnmount' lifecycle method but they are not the same thing. It is particularly used to unsubscribe from APIs, avoid race conditions in async requests, remove event listeners when dealing with components that appear/disappear (mount/unmount) conditionally to avoid memory leaks.
 
 - the cleanup function does not execute on initial rendering of component. Instead, it runs only on re-renders.
 - this function is executed before the side-effect executes.

@@ -12,31 +12,36 @@ const App = () => {
 };
 
 const Person = () => {
-  let [clickCount, setClickCount] = useState(0);
-  useEffect(() => {
-    console.log("This is the side effect.");
-    console.log("latest count:", clickCount);
+  // in this example, we will resize the browser's window
+  let [width, setWidth] = useState(window.innerWidth);
+  let [height, setHeight] = useState(window.innerHeight);
 
+  const changeSize = () => {
+    setHeight(window.innerHeight);
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    // in this side-effect function, we add an event listener on window's resize method
+    // but the problem with this approach is that, the browser will generate a resize event
+    // with each resize, which results in memory leak as each event will occupy its own space in
+    // memory. We need to handle this issue using the cleanup function where, before each re-render
+    // the window's resize event listener is removed. Thus, avoiding memory leakage.
+    window.addEventListener("resize", changeSize);
     // cleanup function
     return () => {
-      console.log(
-        "This is the cleanup function."
-      );
-      // even though, cleanup function executes after re-renders and before the side-effect, it still contains previous state
-      console.log("old count:", clickCount);
+      // when the component re-renders, the previous resize event listener will be removed from memory
+      // to make room for the next resize event listener.
+      window.removeEventListener("resize", changeSize);
     };
   });
 
-  const handleClick = () => {
-    setClickCount(clickCount + 1);
-  };
-
   return (
-    <div className="people">
-      <p>Button clicked {clickCount} times</p>
-      <Button variant="secondary" onClick={handleClick}>
-        Click me
-      </Button>
+    <div className="main">
+      <p>Window Size:</p>
+      <p>
+        {width} x {height}
+      </p>
     </div>
   );
 };

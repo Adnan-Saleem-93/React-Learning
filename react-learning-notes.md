@@ -167,3 +167,7 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
 - the cleanup function does not execute on initial rendering of component. Instead, it runs only on re-renders.
 - this function is executed before the side-effect executes.
 - when component re-renders, the cleanup function will have previous state value instead of the latest.
+
+20. **UseEffect - Fetching Data** =>
+- when making requests to APIs to fetch data, async/await should not be applied to the useEffect callback function. Doing this will in result in the warning "Effect callbacks are synchronous to prevent race conditions".
+- to make async requests with useEffect, either use an async function inside the useEffect callback function or use an external async function and call it from useEffect.

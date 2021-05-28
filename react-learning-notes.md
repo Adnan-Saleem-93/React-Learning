@@ -171,3 +171,6 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
 20. **UseEffect - Fetching Data** =>
 - when making requests to APIs to fetch data, async/await should not be applied to the useEffect callback function. Doing this will in result in the warning "Effect callbacks are synchronous to prevent race conditions".
 - to make async requests with useEffect, either use an async function inside the useEffect callback function or use an external async function and call it from useEffect.
+
+21. **Conditional Rendering/Multiple Returns** =>
+- In React, we can return a different render based on certain conditions.

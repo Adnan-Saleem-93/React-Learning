@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./index.css";
 import {github_url} from "./constants";
-import {Row, Col, Image, Container} from "react-bootstrap";
+import {Row, Col, Image, Container, Spinner} from "react-bootstrap";
 
 const App = () => {
   return (
@@ -13,12 +13,16 @@ const App = () => {
 
 const Person = () => {
   // in this example, we will use the Effect Hook to fetch data from an api
+  let [loading, setLoading] = useState(true);
   let [users, setUsers] = useState([]);
 
-  const getUsers = async () => {
-    let response = await fetch(github_url);
-    let _users = await response.json();
-    setUsers(_users);
+  const getUsers = () => {
+    setTimeout(async () => {
+      let response = await fetch(github_url);
+      let _users = await response.json();
+      setUsers(_users);
+      setLoading(false);
+    }, 2000);
   };
   useEffect(() => {
     getUsers();
@@ -37,10 +41,18 @@ const Person = () => {
 
   return (
     <div className="main">
-      <h2>Github Users</h2>
-      <Container>
-        <Row>{renderUsers()}</Row>
-      </Container>
+      {/* {if loading is 'true' show a spinner} */}
+      {loading ? (
+        <Spinner animation="border" variant="secondary" />
+      ) : (
+        // else show the github users
+        <>
+          <h2>Github Users</h2>
+          <Container>
+            <Row>{renderUsers()}</Row>
+          </Container>
+        </>
+      )}
     </div>
   );
 };

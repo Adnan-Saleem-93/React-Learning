@@ -8,3 +8,10 @@ body {
   margin: 1.5rem auto;
   width: 75%;
 }
+
+.spinner-border {
+  font-size: xx-large;
+  margin-top: 15rem;
+  height: 10rem !important;
+  width: 10rem !important;
+}

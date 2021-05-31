@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import "./index.css";
 import {github_url} from "./constants";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
 import {Row, Col, Image, Container, Spinner} from "react-bootstrap";
 
 const App = () => {
@@ -29,14 +31,26 @@ const Person = () => {
   }, []);
 
   const renderUsers = () => {
-    return users.map((user, index) => {
-      return (
-        <Col xs={6} md={4} key={index}>
-          <Image src={user.avatar_url} roundedCircle height={64} width={64} />
-          <p>{user.login}</p>
-        </Col>
-      );
-    });
+    return users ? (
+      // if users array in not empty, render the user list
+      users.map((user, index) => {
+        return (
+          <Col xs={6} md={4} key={index}>
+            <Image src={user.avatar_url} roundedCircle height={64} width={64} />
+            <p>{user.login}</p>
+          </Col>
+        );
+      })
+    ) : (
+      // if users array is empty, show this message
+      <h3 className="main" style={{color: "red"}}>
+        <i>
+          <FontAwesomeIcon icon={faExclamationCircle} />
+          &ensp;
+        </i>
+        No Users Found
+      </h3>
+    );
   };
 
   return (

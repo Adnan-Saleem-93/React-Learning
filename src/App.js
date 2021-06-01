@@ -20,10 +20,14 @@ const Person = () => {
 
   const getUsers = () => {
     setTimeout(async () => {
-      let response = await fetch(github_url);
-      let _users = await response.json();
-      setUsers(_users);
-      setLoading(false);
+      try {
+        let response = await fetch(github_url);
+        let _users = await response.json();
+        setUsers(_users);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
     }, 2000);
   };
   useEffect(() => {

@@ -2,13 +2,11 @@ import React, {useState, useEffect} from "react";
 import {github_url} from "./constants";
 import Loader from "./Loader";
 import "./index.css";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
 import {Row, Col, Image, Container} from "react-bootstrap";
 
 const Practice = () => {
   // in this example, we will use the short circuit evaluation methods
-  let [loading, setLoading] = useState(true);
+  let [isLoading, setIsLoading] = useState(true);
   let [users, setUsers] = useState([]);
 
   const getUsers = () => {
@@ -17,7 +15,7 @@ const Practice = () => {
         let response = await fetch(github_url);
         let _users = await response.json();
         setUsers(_users);
-        setLoading(false);
+        setIsLoading(false);
       } catch (err) {
         console.error(err);
       }
@@ -28,7 +26,7 @@ const Practice = () => {
   }, []);
 
   const renderUsers = () => {
-    return users ? (
+    return (
       // if users array in not empty, render the user list
       users.map((user, index) => {
         return (
@@ -38,30 +36,23 @@ const Practice = () => {
           </Col>
         );
       })
-    ) : (
-      // if users array is empty, show this message
-      <h3 className="main" style={{color: "red"}}>
-        <i>
-          <FontAwesomeIcon icon={faExclamationCircle} />
-          &ensp;
-        </i>
-        No Users Found
-      </h3>
     );
   };
 
   return (
     <div className="main">
-      {/* {if loading is 'true' show a spinner} */}
-      {loading ? (
-        <Loader />
-      ) : (
-        // else show the github users
+      {/* if isLoading is truthy, render a loader component */}
+      {isLoading && <Loader />}
+      {/* if isLoading is falsy, render the github users */}
+      {isLoading || (
         <>
-          <h2>Github Users</h2>
-          <Container>
-            <Row>{renderUsers()}</Row>
-          </Container>
+          <h2>{users.length || 0} Github Users</h2>
+          {/* if users' length is greater than zero, render users, otherwise don't */}
+          {users.length > 0 && (
+            <Container>
+              <Row>{renderUsers()}</Row>
+            </Container>
+          )}
         </>
       )}
     </div>

@@ -174,3 +174,7 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
 
 21. **Conditional Rendering/Multiple Returns** =>
 - In React, we can return a different render based on certain conditions.
+
+22. **Forms** =>
+- In React, forms mostly work the same as HTML.
+- for the "label" tag, we use 'htmlFor' instead of the 'for' attribute

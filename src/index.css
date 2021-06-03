@@ -15,3 +15,8 @@ body {
   height: 10rem !important;
   width: 10rem !important;
 }
+
+input {
+  width: 50% !important;
+  display: inline !important;
+}

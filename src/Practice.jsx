@@ -2,9 +2,11 @@ import React, {useState, useEffect} from "react";
 import "./index.css";
 
 const Practice = () => {
+  const [userName, setUserName] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("Hello user");
+    alert(`Hello ${userName}`);
   };
 
   return (
@@ -19,6 +21,8 @@ const Practice = () => {
             className="form-control"
             autoComplete="false"
             autoFocus={true}
+            value={userName}
+            onChange={(event) => setUserName(event.target.value)}
           />
           <button type="submit" className="btn btn-primary">
             Submit

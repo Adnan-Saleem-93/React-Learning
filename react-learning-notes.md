@@ -178,3 +178,9 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
 22. **Forms** =>
 - In React, forms mostly work the same as HTML.
 - for the "label" tag, we use 'htmlFor' instead of the 'for' attribute
+
+23. **Forms - Controlled Inputs** =>
+- in react, we can control inputs by connecting it to the component's state value.
+- controlled input is an input that gets its value from a single source of truth (the state value).
+- using controlled input, we stay in charge of how our input is handled as opposed to letting the browser handle the input's behaviour.
+- when we connect an input's value to the state value, it stays whatever value we have in the state. Typing anything in the input form will not change it's value because it is being controlled by the state. So, to update a controlled input's value, we need to use the onChange method to update the state value, which will result in the input's value being updated.

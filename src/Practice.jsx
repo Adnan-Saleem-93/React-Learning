@@ -3,10 +3,20 @@ import "./index.css";
 
 const Practice = () => {
   const [userName, setUserName] = useState("");
+  const [users, setUsers] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`Hello ${userName}`);
+    if (userName) {
+      setUsers((prevUsers) => {
+        let newUsers = [...prevUsers];
+        newUsers.push({id: newUsers.length + 1, userName: userName});
+        return [...newUsers];
+      });
+      setUserName("");
+    } else {
+      alert("Please enter a value");
+    }
   };
 
   return (
@@ -24,11 +34,22 @@ const Practice = () => {
             value={userName}
             onChange={(event) => setUserName(event.target.value)}
           />
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary ml-2 mb-1">
             Submit
           </button>
         </div>
       </form>
+      {users.length > 0 && (
+        <div>
+          {users.map((user, index) => {
+            return (
+              <h5 key={index}>
+                {index + 1}. {user.userName}
+              </h5>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

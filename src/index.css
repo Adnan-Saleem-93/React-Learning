@@ -16,7 +16,12 @@ body {
   width: 10rem !important;
 }
 
-input {
-  width: 50% !important;
-  display: inline !important;
+form > div {
+  margin: 1rem 0;
+}
+.btn {
+  margin: 1rem auto !important;
+}
+.user > * {
+  margin-right: 2rem;
 }

@@ -1,54 +1,93 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import "./index.css";
 
 const Practice = () => {
-  const [userName, setUserName] = useState("");
-  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({name: "", email: "", age: 0});
+  const [userList, setUserList] = useState([]);
+
+  const handleChange = (event) => {
+    let name = event.target.name;
+    let value = event.target.value;
+    setUser({...user, [name]: value});
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (userName) {
-      setUsers((prevUsers) => {
+    if (user.name && user.email && user.age) {
+      setUserList((prevUsers) => {
         let newUsers = [...prevUsers];
-        newUsers.push({id: newUsers.length + 1, userName: userName});
+        newUsers.push({id: newUsers.length + 1, name: user.name, email: user.email, age: user.age});
         return [...newUsers];
       });
-      setUserName("");
+      setUser({name: "", email: "", age: ""});
     } else {
-      alert("Please enter a value");
+      alert("All fields are required.!");
     }
   };
 
   return (
     <div className="main">
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="userName">User Name : &ensp;</label>
+        <div className="row">
+          <label htmlFor="name" className="col-md-3">
+            User Name : &ensp;
+          </label>
           <input
             type="text"
-            id="userName"
-            name="userName"
-            className="form-control"
-            autoComplete="false"
+            id="name"
+            name="name"
+            className="form-control col-md-7"
+            autoComplete="true"
             autoFocus={true}
-            value={userName}
-            onChange={(event) => setUserName(event.target.value)}
+            value={user.name}
+            onChange={handleChange}
           />
-          <button type="submit" className="btn btn-primary ml-2 mb-1">
-            Submit
-          </button>
         </div>
+        <div className="row">
+          <label htmlFor="email" className="col-md-3">
+            Email : &ensp;
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="form-control col-md-7"
+            autoComplete="true"
+            value={user.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="row">
+          <label htmlFor="age" className="col-md-3">
+            Age : &ensp;
+          </label>
+          <input
+            type="number"
+            min="0"
+            id="age"
+            name="age"
+            className="form-control col-md-7"
+            autoComplete="false"
+            value={user.age}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
-      {users.length > 0 && (
-        <div>
-          {users.map((user, index) => {
+      {userList.length > 0 && (
+        <>
+          {userList.map((item, index) => {
             return (
-              <h5 key={index}>
-                {index + 1}. {user.userName}
-              </h5>
+              <div key={index} className="user">
+                <b>{item.name}</b>
+                <span>{item.age}</span>
+                <span>{item.email}</span>
+              </div>
             );
           })}
-        </div>
+        </>
       )}
     </div>
   );

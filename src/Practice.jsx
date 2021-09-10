@@ -12,7 +12,7 @@ const Practice = () => {
     counter.current = counter.current + 1;
   });
   const handleClick = () => {
-    textInput.current.value = "selected";
+    textInput.current.focus();
   };
 
   console.log("render " + parseInt(counter.current + 1));

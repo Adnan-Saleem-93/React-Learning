@@ -1,8 +1,7 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useEffect, useRef, forwardRef} from "react";
 import "./index.css";
 
 const Practice = () => {
-  const [value, setValue] = useState("");
   const counter = useRef(0);
   const textInput = useRef(null);
 
@@ -12,24 +11,27 @@ const Practice = () => {
     counter.current = counter.current + 1;
   });
   const handleClick = () => {
+    textInput.current.value = "selected";
     textInput.current.focus();
   };
 
   console.log("render " + parseInt(counter.current + 1));
   return (
     <div className="container-sm mx-auto mt-5 text-center">
-      <input
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        className="form-control"
-        ref={textInput}
-      />
-      <h1>{`The component has been re-rendered ${counter.current} times`}</h1>
+      <InputComponent ref={textInput} />
       <button className="btn btn-primary" onClick={handleClick}>
         Click
       </button>
     </div>
   );
 };
+
+export const InputComponent = forwardRef((props, ref) => {
+  return (
+    <>
+      <input value="" className="form-control" ref={ref} />
+    </>
+  );
+});
 
 export default Practice;

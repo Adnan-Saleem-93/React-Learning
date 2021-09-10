@@ -202,3 +202,10 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
     - can be used to store mutable persistant objects/values
     - these persistant values won't reset after re-renders
 - persists between re-renders (it's current property remains same even if component re-renders)
+
+24. **ForwardRef**
+- useRef objects can be passed as props to other components.
+    e.g. `<SomeComponent ref={someRef} />`
+- to access the passed ref, other components need to use the forwardRef() method which receive the other props in the "props" object and the ref in the "ref" object.
+    e.g. `const SomeComponent = React.forwardRef((props,ref)=>{});`
+- then the ref object can be used the same way in the 'SomeComponent' component.

@@ -185,3 +185,20 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
 - using controlled input, we stay in charge of how our input is handled as opposed to letting the browser handle the input's behaviour.
 - when we connect an input's value to the state value, it stays whatever value we have in the state. Typing anything in the input form will not change it's value because it is being controlled by the state. So, to update a controlled input's value, we need to use the onChange method to update the state value, which will result in the input's value being updated.
 - Multiple Inputs - used dynamic object properties to handle change of multiple inputs in one handler function
+
+24. **UseRef**
+- used for creating mutable "ref" object and/or accessing DOM elements
+- does not trigger re-rendering of component
+- *Usage*: 
+  ```javascript 
+    const someRef = useRef(initialValue) 
+    ```
+- *Accessing DOM elements* : 
+    - "ref" attribute is used to hold a reference of a DOM element.
+    - _`<input className="someInput" ref={exampleRef}/>`_
+    - Example: exampleRef.current.focus() will focus the input
+    - equivalent of document.querySelector('.someInput').focus()
+- *Storing mutable objects/values* :
+    - can be used to store mutable persistant objects/values
+    - these persistant values won't reset after re-renders
+- persists between re-renders (it's current property remains same even if component re-renders)

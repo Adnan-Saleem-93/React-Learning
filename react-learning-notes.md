@@ -203,9 +203,23 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
     - these persistant values won't reset after re-renders
 - persists between re-renders (it's current property remains same even if component re-renders)
 
-24. **ForwardRef**
+25. **ForwardRef**
 - useRef objects can be passed as props to other components.
     e.g. `<SomeComponent ref={someRef} />`
 - to access the passed ref, other components need to use the forwardRef() method which receive the other props in the "props" object and the ref in the "ref" object.
     e.g. `const SomeComponent = React.forwardRef((props,ref)=>{});`
 - then the ref object can be used the same way in the 'SomeComponent' component.
+
+26. **UseReducer**
+- used particularly for large scale, complex applications.
+- similar to useState, however, it takes a "reducer" function (where all the state handling is performed) as its first argument and the very initial state as its second argument.
+- useReducer provides two objects, "state" object and "dispatch" method.
+    - state contains components state values.
+    - dispatch is invoked to update the state, similar to setState in useState.
+    - dispatch calls the "reducer" function.
+    - reducer function carries two parameters, state and action.
+        - state is where the current state of the component is passed (before it is updated).
+        - action object is used to decide what we should be updated in the state.
+            - action has two properties, "type" and "payload" (optional)
+            - using 'type', we decide what to update in the state,
+            - 'payload' is used to add/delete/update something in the state.

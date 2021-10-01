@@ -223,3 +223,31 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
             - action has two properties, "type" and "payload" (optional)
             - using 'type', we decide what to update in the state,
             - 'payload' is used to add/delete/update something in the state.
+
+27. **UseContext/Context API**
+- used to avoid prop drilling (i.e., passing down state values as props to child components).
+- helpful if we have a lot of components
+- Wrap top/parent component in createContext object's Provider property and add state value or any other value which needs to be passed down to child components.
+    e.g., 
+    ```javascript
+    const Context = React.createContext(defaultValue); 
+    const App(){
+        return(
+            <Context.Provider value='hello'>
+            <SubComponent/>
+            </Context.Provider>
+        )
+    }
+    ```
+- the value 'hello' can be accessed by any sub component of App Component using useContext().
+    e.g.,
+    ```javascript
+    const SubComponent(){
+        const value = useContext(Context);
+        return(
+            <h1>{value}</h1> 
+            // renders "hello"
+        )
+    }
+    ```
+- The object "Context" created using createContext needs to be accessible by the sub-components

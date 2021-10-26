@@ -251,3 +251,6 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
     }
     ```
 - The object "Context" created using createContext needs to be accessible by the sub-components
+
+28. **Custom Hooks**
+- we can create custom hooks for a reusable part of our code. If some similar functionality is being used in multiple places, we can create custom hooks to centralize that functionality.

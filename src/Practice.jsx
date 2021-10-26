@@ -1,42 +1,30 @@
-import React, {useContext, createContext} from 'react'
-import {data} from './constants'
+import React from 'react'
+import {useFetch} from './useFetch'
 import './index.css'
 
-const dataContext = createContext()
-
 const Practice = () => {
-  return (
-    <dataContext.Provider value={data}>
-      <div className="mx-auto container mt-5 text-center">
-        <ChildComponent />
-      </div>
-    </dataContext.Provider>
-  )
-}
-
-const ChildComponent = () => {
-  return (
-    <>
-      <h3>Child Component</h3>
-      <SubChildComponent />
-    </>
-  )
-}
-
-const SubChildComponent = () => {
-  let people = useContext(dataContext)
+  let url = 'https://course-api.com/javascript-store-products'
+  let {isLoading, data} = useFetch(url)
 
   return (
-    <>
-      <h4>Sub Child Component</h4>
-      {people.map(({id, name}, index) => {
-        return (
-          <p key={index}>
-            {id}. <b>{name}</b>
-          </p>
-        )
-      })}
-    </>
+    <div className="container mt-5" id="main">
+      {isLoading ? (
+        <h1 className="mx-auto">Loading...</h1>
+      ) : (
+        data.map((item, index) => {
+          let {id, fields} = item
+          let {company, image, name, price} = fields
+          return (
+            <div key={`${index}=${id}`}>
+              <h4>{name}</h4>
+              <img src={image[0].url} alt={name} />
+              <p style={{marginBottom: 0, fontWeight: 'bold'}}>${price}</p>
+              <p>{company}</p>
+            </div>
+          )
+        })
+      )}
+    </div>
   )
 }
 

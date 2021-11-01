@@ -254,3 +254,8 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
 
 28. **Custom Hooks**
 - we can create custom hooks for a reusable part of our code. If some similar functionality is being used in multiple places, we can create custom hooks to centralize that functionality.
+
+29. **Prop Types**
+- used for type-checking and making sure the correct type of value is supplied to the 'props' of a component.
+- It also makes sure, a required prop is supplied to a component.
+- If some prop, whose is required and receives a certain type of value, is not passed to a component, we can use the 'defaultProps' object to assign default values to the props.

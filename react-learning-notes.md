@@ -259,3 +259,10 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
 - used for type-checking and making sure the correct type of value is supplied to the 'props' of a component.
 - It also makes sure, a required prop is supplied to a component.
 - If some prop, whose is required and receives a certain type of value, is not passed to a component, we can use the 'defaultProps' object to assign default values to the props.
+
+29. **React Router**
+- used for navigation between different pages in an application.
+- wrap App component or Top most component in the <BrowserRouter> component of *react-router-dom* to enable routing in the entire application.
+- wrap your components in the <Route path="/about"> component of *react-router-dom* to help react-reacter identify which component should be rendered using the "path" attribute.
+- to avoid rendering of multiple components, whose paths are identical or if one path partially matches another path, we add the 'exact' attribute like <Route exact>
+    e.g., if you have a '/' path for *home* component and another path '/about' for the *about* component, react-router will see that the *home* component's path '/' partially exists in the '/about', so it will render the *home* component alongside the *about* component. The *exact* attribute will tell react-router to only render the component whose exact route is matched.

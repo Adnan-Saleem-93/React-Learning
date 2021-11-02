@@ -36,14 +36,15 @@ form > div {
   padding: 0 !important;
   margin: 0 0 0 1rem !important;
 }
-#main {
+.page {
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
 }
-#main > div {
+.page > div {
   margin: 1rem;
   width: 100%;
   text-align: center;

@@ -1,21 +1,27 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Products from './pages/Products'
+import Error from './pages/Error'
 
 const App = () => {
   return (
     <>
-      <Route path="/" exact>
-        <Home />
-      </Route>
-      <Route path="/about">
-        <About />
-      </Route>
-      <Route path="/products">
-        <Products />
-      </Route>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/products">
+          <Products />
+        </Route>
+        <Route path="*">
+          <Error />
+        </Route>
+      </Switch>
     </>
   )
 }

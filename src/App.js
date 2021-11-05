@@ -4,10 +4,12 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Products from './pages/Products'
 import Error from './pages/Error'
+import Navbar from './Navbar'
 
 const App = () => {
   return (
     <>
+      <Navbar />
       <Switch>
         <Route path="/" exact>
           <Home />

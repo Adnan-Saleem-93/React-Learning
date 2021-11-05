@@ -1,12 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import defaultImage from './images/unnamed.png'
+import {Link} from 'react-router-dom'
 
-const Product = ({name, price, image}) => {
+const Product = ({id, name, price, image}) => {
   return (
     <>
       <div>
-        <h4>{name}</h4>
+        <Link to={`/product/${id}`}>
+          <h4>{name}</h4>
+        </Link>
         <img src={image.url} alt={name} />
         <p style={{marginBottom: 0}}>${price}</p>
       </div>

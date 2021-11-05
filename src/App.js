@@ -5,6 +5,7 @@ import About from './pages/About'
 import Products from './pages/Products'
 import Error from './pages/Error'
 import Navbar from './Navbar'
+import SingleProduct from './pages/SingleProduct'
 
 const App = () => {
   return (
@@ -19,6 +20,9 @@ const App = () => {
         </Route>
         <Route path="/products">
           <Products />
+        </Route>
+        <Route path="/product/:id">
+          <SingleProduct />
         </Route>
         <Route path="*">
           <Error />

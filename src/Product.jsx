@@ -10,7 +10,7 @@ const Product = ({id, name, price, image}) => {
         <Link to={`/product/${id}`}>
           <h4>{name}</h4>
         </Link>
-        <img src={image.url} alt={name} />
+        <img src={image[0].url} alt={name} />
         <p style={{marginBottom: 0}}>${price}</p>
       </div>
     </>
@@ -20,11 +20,11 @@ const Product = ({id, name, price, image}) => {
 Product.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  image: PropTypes.object.isRequired
+  image: PropTypes.array.isRequired
 }
 Product.defaultProps = {
   name: 'default name',
   price: 5.5,
-  image: {url: defaultImage}
+  image: [{url: defaultImage}]
 }
 export default Product

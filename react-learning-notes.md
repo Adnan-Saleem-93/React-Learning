@@ -268,3 +268,9 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
     e.g., if you have a '/' path for *home* component and another path '/about' for the *about* component, react-router will see that the *home* component's path '/' partially exists in the '/about', so it will render the *home* component alongside the *about* component. The *exact* attribute will tell react-router to only render the component whose exact route is matched.
 - if a path, which does not have any component associated with it, is entered, we can add a route with the "*" (all) path to show any error page to the user if he/she goes to an invalid URL.
 - the downside of using the "*" is that, it's component will get rendered with valid URLs as well. To avoid this, we wrap the <Route> component in the <Switch> componnent of react-router-dom. The Switch component will only render the first component from the matched URLs.
+
+30. **React.Memo**
+- used for memoization (caching components)
+- when the state or props of a component get updated, it will trigger a re-render, which in turn re-renders all the child components of that component, even if the updated state or props don't have any effect on the sub-components.
+- to make sure sub-components only get re-rendered when their props or state change, we can wrap the sub-components in React.memo methods. This way, React will cache those components in memory, and check if anything has changed in them or not. If not, React will fetch those components from the cache instead of re-rendering them completely.
+- NOTE: *Since React is optimized enough already, usage of memoization will only optimize the app by a small amount. Memoization is useful if our app has a huge amount of data/elements to render*

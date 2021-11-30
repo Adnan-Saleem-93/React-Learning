@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import defaultImage from '../images/unnamed.png'
 import {Link} from 'react-router-dom'
 
-const Product = ({id, name, price, image}) => {
+const Product = React.memo(({id, name, price, image}) => {
+  useEffect(() => {
+    console.count('product called')
+  })
   return (
     <>
       <div>
@@ -15,7 +18,7 @@ const Product = ({id, name, price, image}) => {
       </div>
     </>
   )
-}
+})
 
 Product.propTypes = {
   name: PropTypes.string.isRequired,

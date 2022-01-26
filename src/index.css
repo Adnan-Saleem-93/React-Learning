@@ -46,14 +46,15 @@ form > div {
 .page {
   margin-top: 1rem;
   display: flex;
-  justify-content: space-between;
+  align-content: space-between;
+  justify-content: space-around;
+  flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  flex-direction: column;
 }
 .page > div {
   margin: 1rem;
-  width: 100%;
+  width: 25%;
   text-align: center;
   padding: 1rem;
   background-color: #e4e3dc42;
@@ -62,7 +63,11 @@ img {
   width: 150px;
   height: 150px;
 }
-
+.count-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .navbar {
   display: flex;
   justify-content: center;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import defaultImage from '../images/unnamed.png'
 import {Link} from 'react-router-dom'
 
-const Product = React.memo(({id, name, price, image}) => {
+const Product = React.memo(({id, name, price, image, addToCart}) => {
   useEffect(() => {
     console.count('product called')
   })
@@ -15,6 +15,9 @@ const Product = React.memo(({id, name, price, image}) => {
         </Link>
         <img src={image[0].url} alt={name} />
         <p style={{marginBottom: 0}}>${price}</p>
+        <button className="btn btn-primary" onClick={addToCart}>
+          Add To Cart
+        </button>
       </div>
     </>
   )

@@ -274,3 +274,10 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
 - when the state or props of a component get updated, it will trigger a re-render, which in turn re-renders all the child components of that component, even if the updated state or props don't have any effect on the sub-components.
 - to make sure sub-components only get re-rendered when their props or state change, we can wrap the sub-components in React.memo methods. This way, React will cache those components in memory, and check if anything has changed in them or not. If not, React will fetch those components from the cache instead of re-rendering them completely.
 - NOTE: *Since React is optimized enough already, usage of memoization will only optimize the app by a small amount. Memoization is useful if our app has a huge amount of data/elements to render*
+
+31. **useCallback**
+- used for memoizing function objects
+- when a state or prop of a component gets updated, function objects are re-created. If any function object is passed down to a child component, a re-render of the parent component causes re-render of the component even if the child component is memoized.
+- useCallback is used to persist function objects if the objects in their dependency list are not updated.
+- this way, unnecessary re-rendering of the child component can be prevented.
+- this Hook is mostly useful if a child component renders a big list, for example, list of shopping items or similar.

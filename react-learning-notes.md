@@ -281,3 +281,7 @@ The useEffect hook has a cleanup function that works in a similar fashion as 'co
 - useCallback is used to persist function objects if the objects in their dependency list are not updated.
 - this way, unnecessary re-rendering of the child component can be prevented.
 - this Hook is mostly useful if a child component renders a big list, for example, list of shopping items or similar.
+
+32. **useMemo**
+- useMemo lets you memoize expensive computations or functions that perform expensive computations.
+- the computation functions will only be executed when the values specified in its dependency array get updated, otherwise the computated values will be fetched from cache.
